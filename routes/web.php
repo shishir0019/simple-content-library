@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+// Controller
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +18,11 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/auth/registration', [AuthController::class, 'registrationView'])->name('auth.registration.form');
+Route::post('/auth/registration', [AuthController::class, 'registration'])->name('auth.registration');
+Route::get('/auth/login', [AuthController::class, 'loginView'])->name('auth.login.form');
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::get('/search', [SearchController::class, 'index'])->name('search.index');

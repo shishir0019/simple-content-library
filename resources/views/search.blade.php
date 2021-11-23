@@ -1,3 +1,3 @@
 <x-layout>
-        Main content
+    Search content
 </x-layout>

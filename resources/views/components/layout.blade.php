@@ -21,7 +21,7 @@
             <x-header></x-header>
             <div class="flex-1">
                 <div class="container mx-auto">
-                    <x-main></x-main>
+                    <x-main> {{ $slot }} </x-main>
                 </div>
             </div>
             <x-footer></x-footer>
