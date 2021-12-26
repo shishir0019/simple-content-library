@@ -18,7 +18,7 @@
             </div>
             <div class="flex flex-col">
                 <label for="password">Password</label>
-                <input class="border p-2" type="text" name="password" required>
+                <input class="border p-2" type="password" name="password" required>
             </div>
             <div class="flex flex-col">
                 <label>

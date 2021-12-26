@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <script src="https://unpkg.com/feather-icons"></script>
     <title>Content library system</title>
 </head>
 <body>
@@ -19,6 +20,7 @@
     </div> -->
     <!-- <div class="absolute left-0 top-0 bottom-0 right-0"> -->
             <x-header></x-header>
+            <x-notification></x-notification>
             <div class="flex-1">
                 <div class="container mx-auto">
                     <x-main> {{ $slot }} </x-main>
@@ -30,6 +32,9 @@
 
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+<script>
+    feather.replace()
+</script>
 
 </body>
 </html>

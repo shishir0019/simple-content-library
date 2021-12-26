@@ -22,7 +22,7 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6'
         ]);
 
@@ -32,11 +32,18 @@ class AuthController extends Controller
 
         $body = $validator->safe()->only(['name', 'email', 'password']);
 
-        return User::create([
+        $user = User::create([
             'name' => $body['name'],
             'email' => $body['email'],
             'password' => Hash::make($body['password'])
         ]);
+
+        if($user){
+            return redirect(route('auth.login.form'))->with('global-success','You are register.');
+        }else{
+            App::abort(500, 'Server Error');
+        }
+        
     }
 
     public function loginView()

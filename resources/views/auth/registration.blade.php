@@ -20,7 +20,7 @@
             </div>
             <div class="flex flex-col">
                 <label for="password">Password</label>
-                <input class="border p-2" type="text" name="password">
+                <input class="border p-2" type="password" name="password">
             </div>
             <hr>
             <div class="flex flex-col">
