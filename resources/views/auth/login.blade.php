@@ -1,8 +1,7 @@
 <x-layout>
     <div class="flex p-5">
-        <div class="flex-1">
-        </div>
-        <form class="flex flex-col gap-y-2 p-5 bg-gray-100" method="POST" action="{{ route('auth.login') }}"
+        <div class="flex-1"></div>
+        <form class="flex flex-col gap-y-2 p-5 bg-gray-100" method="POST" action="{{ route('api.auth.login') }}"
               style="width: 400px;">
             @foreach ($errors->all() as $error)
                 <div class="p-2 bg-red-200">{{ $error }}</div>
@@ -31,7 +30,7 @@
             </div>
             <hr>
             <div class="">
-                I am not registered. I need a <a class="text-blue-700 hover:underline" href="{{ route('auth.registration.form')  }}">account</a>
+                I am not registered. I need a <a class="text-blue-700 hover:underline" href="{{ route('auth.registration.view')  }}">account</a>
             </div>
         </form>
     </div>

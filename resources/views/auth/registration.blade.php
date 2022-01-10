@@ -1,7 +1,7 @@
 <x-layout>
     <div class="flex p-5">
         <div class="flex-1"></div>
-        <form class="flex flex-col gap-y-2 p-5 bg-gray-100" method="POST" action="{{ route('auth.registration') }}" style="width: 400px;">
+        <form class="flex flex-col gap-y-2 p-5 bg-gray-100" method="POST" action="{{ route('api.auth.registration') }}" style="width: 400px;">
             @foreach ($errors->all() as $error)
                 <div class="p-2 bg-red-200">{{ $error }}</div>
             @endforeach
@@ -13,6 +13,10 @@
             <div class="flex flex-col">
                 <label for="name">Name</label>
                 <input class="border p-2" type="text" name="name" value="{{ old('name') }}" required>
+            </div>
+            <div class="flex flex-col">
+                <label for="name">User Name</label>
+                <input class="border p-2" type="text" name="username" value="{{ old('username') }}" required>
             </div>
             <div class="flex flex-col">
                 <label for="email">Email</label>
@@ -28,7 +32,7 @@
             </div>
             <hr>
             <div class="">
-                I am already registered. I need to <a class="text-blue-700 hover:underline" href="{{ route('auth.login.form')  }}">login</a>
+                I am already registered. I need to <a class="text-blue-700 hover:underline" href="{{ route('auth.login.view')  }}">login</a>
             </div>
         </form>
     </div>

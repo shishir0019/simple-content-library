@@ -8,10 +8,17 @@
                     <input class="btn" type="submit" value="Search">
                 </form>
             </nav>
-            <div class="flex items-center gap-x-3">
-                <a href="{{ route('auth.login.form') }}" class="btn">Login</a>
-                <a href="{{ route('auth.registration.form') }}" class="btn">Registration</a>
-            </div>
+            @if(Auth::guest())
+                <div class="flex items-center gap-x-3">
+                    <a href="{{ route('auth.login.view') }}" class="btn">Login</a>
+                    <a href="{{ route('auth.registration.view') }}" class="btn">Registration</a>
+                </div>
+            @endif
+            @if(Auth::user())
+                <div>
+                    <a href="{{ route('auth.user.view', strtolower(Auth::user()->username)) }}" >{{ Auth::user()->name; }}</a>
+                </div>
+            @endif
         </div>
     </div>
 </header>
