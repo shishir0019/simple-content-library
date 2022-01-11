@@ -10,24 +10,26 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <script src="https://unpkg.com/feather-icons"></script>
-    <title>Content library system</title>
+    <title>{{__('admin.admin_panel')}}</title>
 </head>
 <body>
 
-<div class="min-h-screen min-w-screen flex flex-col">
-    <!-- <div class="absolute left-0 top-0 bottom-0 right-0 z-50 bg-opacity-70 bg-black">
-        <x-sidebar></x-sidebar>
-    </div> -->
-    <!-- <div class="absolute left-0 top-0 bottom-0 right-0"> -->
-            <x-header></x-header>
-            <x-notification></x-notification>
-            <div class="flex-1">
-                <div class="container mx-auto">
-                    <x-main> {{ $slot }} </x-main>
+<div class="min-h-screen max-h-screen min-w-screen flex flex-col">
+    <x-header.admin></x-header.admin>
+    <x-common.notification></x-common.notification>
+    <div class="flex-1 flex">
+        <x-sidebar.admin></x-sidebar.admin>
+        <div class="h-fill flex flex-col w-full">
+            <div class="flex-1 flex flex-col">
+                <x-common.breadcrumbs></x-common.breadcrumbs>
+                <div class="flex-1 overflow-y-scroll">
+                    <div style="height: 0;">
+                        <x-main> {{ $slot }} </x-main>
+                    </div>
                 </div>
             </div>
-            <x-footer></x-footer>
-    <!-- </div> -->
+        </div>
+    </div>
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>

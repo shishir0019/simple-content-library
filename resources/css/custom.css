@@ -1,0 +1,73 @@
+/* dev */
+.t {
+    border: 1px solid red;
+}
+
+/* ::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    border-radius: 100vh;
+    background: #edf2f7;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 100vh;
+    border: 3px solid #edf2f7;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a0aec0;
+  } */
+
+.btn{
+    @apply px-3 py-1 cursor-pointer;
+}
+
+.btn--full {
+    @apply w-full;
+}
+
+.btn-dark{
+    @apply text-white bg-black hover:bg-gray-700;
+}
+
+.btn--active {
+    @apply bg-gray-700;
+}
+
+.btn-success{
+    @apply text-white bg-green-500 hover:bg-green-700;
+}
+.btn-danger{
+    @apply text-white bg-red-500 hover:bg-red-700;
+}
+
+/* form */
+
+.form{
+    @apply bg-gray-100 flex flex-col gap-y-2 p-5 ;
+}
+
+.form .form__item{
+    @apply flex flex-col;
+}
+
+.form .form__item label {
+    @apply text-gray-700;
+}
+
+.sidebar-list{
+    @apply flex flex-col h-full;
+}
+
+.sidebar-list svg {
+    @apply p-1;
+}
+
+.sidebar-list__item{
+    @apply w-full hover:bg-blue-300 hover:bg-opacity-60 px-3 py-1 hover:text-blue-800 flex gap-x-2;
+}

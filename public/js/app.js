@@ -2099,13 +2099,28 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!******************************!*\
   !*** ./resources/js/main.js ***!
   \******************************/
-/***/ (() => {
+/***/ (function() {
 
+window.prototype = this;
 console.log('Main.js working...');
 
-window.close_global_notification = function () {
+close_global_notification = function close_global_notification() {
   var notification = document.querySelector('#notification');
   notification.style.display = "none";
+};
+
+closeMenu = function closeMenu() {
+  var sidebar = document.querySelector('#admin_sidebar');
+  var menu = document.querySelector('#admin_menu');
+  var display = sidebar.style.display;
+
+  if (display == 'flex' || display == '') {
+    sidebar.style.display = 'none';
+    menu.classList.remove('btn--active');
+  } else {
+    menu.classList.add('btn--active');
+    sidebar.style.display = 'flex';
+  }
 };
 
 /***/ }),

@@ -1,37 +1,36 @@
-<x-layout>
+<x-layouts.client>
     <div class="flex p-5">
         <div class="flex-1"></div>
-        <form class="flex flex-col gap-y-2 p-5 bg-gray-100" method="POST" action="{{ route('api.auth.login') }}"
+        <form class="form" method="POST" action="{{ route('api.auth.login') }}"
               style="width: 400px;">
-            @foreach ($errors->all() as $error)
-                <div class="p-2 bg-red-200">{{ $error }}</div>
-            @endforeach
+            <!-- show errors -->
+            <x-common.errors/>
             @csrf
             <div>
-                <h1 class="text-2xl">Login</h1>
+                <h1 class="text-2xl">{{__('client.login')}}</h1>
             </div>
             <hr>
-            <div class="flex flex-col">
-                <label for="email">Email</label>
+            <div class="form__item">
+                <label for="email">{{__('client.email')}}</label>
                 <input class="border p-2" type="email" name="email" value="{{ old('email') }}" required>
             </div>
-            <div class="flex flex-col">
-                <label for="password">Password</label>
+            <div class="form__item">
+                <label for="password">{{__('client.password')}}</label>
                 <input class="border p-2" type="password" name="password" required>
             </div>
-            <div class="flex flex-col">
+            <div class="form__item">
                 <label>
-                    <input type="checkbox" name="remember"> Remember Me
+                    <input type="checkbox" name="remember"> {{__('client.remember_me')}}
                 </label>
             </div>
             <hr>
-            <div class="flex flex-col">
-                <input class="border p-2 uppercase bg-black hover:bg-gray-800 text-white" type="submit" value="submit">
+            <div class="form__item">
+                <input class="btn btn-dark btn--full py-3 uppercase" type="submit" value="{{__('login')}}">
             </div>
             <hr>
             <div class="">
-                I am not registered. I need a <a class="text-blue-700 hover:underline" href="{{ route('auth.registration.view')  }}">account</a>
+                I am not registered. I need an <a class="text-blue-700 hover:underline" href="{{ route('auth.registration.view')  }}">{{__('client.account')}}</a>
             </div>
         </form>
     </div>
-</x-layout>
+</x-layouts.client>

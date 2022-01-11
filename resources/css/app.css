@@ -3,6 +3,4 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn{
-    @apply px-3 py-1 bg-black hover:bg-gray-800;
-}
+@import url(./custom.css);
