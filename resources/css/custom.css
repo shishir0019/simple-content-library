@@ -74,3 +74,7 @@
 .sidebar-list__item--active{
     @apply bg-blue-300 bg-opacity-60 text-blue-800;
 }
+
+.root {
+    @apply container mx-auto p-3;
+}

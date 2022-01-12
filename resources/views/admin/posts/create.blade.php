@@ -12,11 +12,11 @@
 
             <div class="form__item">
                 <label for="name">{{__('admin.title')}}</label>
-                <input class="border p-2" type="text" name="title" value="{{ old('title') }}" placeholder="{{ __('admin.title') }}" required>
+                <input class="border p-2" type="text" name="title" value="{{ old('title') }}" placeholder="{{ __('admin.title') }}" autocomplete="off" required>
             </div>
             <div class="form__item">
                 <label for="slag">{{__('admin.slag')}}</label>
-                <input class="border p-2" type="text" name="slag" value="{{ old('slag') }}" placeholder="{{ __('admin.slag') }}" required>
+                <input class="border p-2" type="text" name="slag" value="{{ old('slag') }}" placeholder="{{ __('admin.slag') }}" autocomplete="off" required>
             </div>
             <div class="form__item">
                 <label for="slag">{{__('admin.categories')}}</label>
