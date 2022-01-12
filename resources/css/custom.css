@@ -71,3 +71,6 @@
 .sidebar-list__item{
     @apply w-full hover:bg-blue-300 hover:bg-opacity-60 px-3 py-1 hover:text-blue-800 flex gap-x-2;
 }
+.sidebar-list__item--active{
+    @apply bg-blue-300 bg-opacity-60 text-blue-800;
+}

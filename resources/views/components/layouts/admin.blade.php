@@ -16,11 +16,11 @@
 
 <div class="min-h-screen max-h-screen min-w-screen flex flex-col">
     <x-header.admin></x-header.admin>
-    <x-common.notification></x-common.notification>
     <div class="flex-1 flex">
         <x-sidebar.admin></x-sidebar.admin>
         <div class="h-fill flex flex-col w-full">
             <div class="flex-1 flex flex-col">
+                <x-common.notification></x-common.notification>
                 <x-common.breadcrumbs></x-common.breadcrumbs>
                 <div class="flex-1 overflow-y-scroll">
                     <div style="height: 0;">

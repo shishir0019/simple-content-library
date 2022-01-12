@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
 
+use function PHPSTORM_META\type;
+
 class AuthController extends Controller
 {
     public function registration(Request $request)
@@ -31,6 +33,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $body['name'],
             'email' => $body['email'],
+            'type' => 0,
             'username' => $body['username'],
             'password' => Hash::make($body['password'])
         ]);
@@ -66,5 +69,61 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect(route('auth.login.view'))->with('global-info', 'You are logout.');
+    }
+
+    public function registrationAdmin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'username' => 'required|min:5|max:12',
+            'type' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6'
+        ]);
+
+        if($validator->fails()) {
+            return redirect(route('admin.auth.registration.view'))->withErrors($validator)->withInput();
+        }
+
+        $body = $validator->safe()->only(['name', 'username', 'type', 'email', 'password']);
+
+        $user = User::create([
+            'name' => $body['name'],
+            'email' => $body['email'],
+            'username' => $body['username'],
+            'type' => $body['type'],
+            'password' => Hash::make($body['password'])
+        ]);
+
+        if($user){
+            return redirect(route('admin.auth.login.view'))->with('global-success','You are register. Now you can login!');
+        }else{
+            App::abort(500, 'Server Error');
+        }
+    }
+    public function loginAdmin(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+        ]);
+        if($validator->fails()) {
+            return redirect(route('admin.auth.login.view'))->withErrors($validator)->withInput();
+        }
+
+        // Retrieve the validated credentials...
+        $credentials = $validator->safe()->only(['email', 'password']);
+        $remember_me = $request->has('remember') ? true : false;
+
+        if(Auth::attempt($credentials, $remember_me)) {
+            return redirect()->intended(route('admin.dashboard.view'))->with('global-success', 'Login success.');
+        }
+        return redirect(route('admin.auth.login.view'))->withErrors('Credential Incorrect.')->withInput();
+    }
+    public function logoutAdmin(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect(route('admin.auth.login.view'))->with('global-info', 'You are logout.');
     }
 }
