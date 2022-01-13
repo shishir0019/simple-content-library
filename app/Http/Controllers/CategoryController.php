@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Post;
 
 class CategoryController extends Controller
 {
@@ -41,7 +42,7 @@ class CategoryController extends Controller
             'slag' => 'required|min:3|max:15|unique:categories',
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect(route('admin.categories.create'))->withErrors($validator)->withInput();
         }
 
@@ -52,9 +53,9 @@ class CategoryController extends Controller
             'slag' => $body['slag']
         ]);
 
-        if($category){
-            return redirect(route('admin.categories.index'))->with('global-success','Post Createed successfully');
-        }else{
+        if ($category) {
+            return redirect(route('admin.categories.index'))->with('global-success', 'Post Createed successfully');
+        } else {
             App::abort(500, 'Server Error');
         }
     }
@@ -78,7 +79,7 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.categories.create', ['category' => Category::find($id)]);
     }
 
     /**
@@ -90,7 +91,27 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($id);
+        $category = Category::findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:3',
+            'slag' => 'required|min:3|max:15|unique:categories',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('admin.categories.create'))->withErrors($validator)->withInput();
+        }
+
+        $body = $validator->safe()->only(['name', 'slag']);
+
+        $category->fill($body)->save();
+
+        if ($category) {
+            return redirect(route('admin.categories.index'))->with('global-success', 'Post Createed successfully');
+        } else {
+            App::abort(500, 'Server Error');
+        }
     }
 
     /**

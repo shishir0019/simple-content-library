@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Post;
 
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('admin/posts/create');
+        return view('admin/posts/create', ['categories' => Category::all()]);
     }
 
     /**
@@ -44,7 +45,7 @@ class PostController extends Controller
             'category' => 'required'
         ]);
 
-        if($validator->fails()) {
+        if ($validator->fails()) {
             return redirect(route('admin.posts.create'))->withErrors($validator)->withInput();
         }
 
@@ -56,9 +57,9 @@ class PostController extends Controller
             'category' => $body['category'],
         ]);
 
-        if($post){
-            return redirect(route('admin.posts.index'))->with('global-success','Post Createed successfully');
-        }else{
+        if ($post) {
+            return redirect(route('admin.posts.index'))->with('global-success', 'Post Createed successfully');
+        } else {
             App::abort(500, 'Server Error');
         }
     }
@@ -82,7 +83,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('admin.posts.create', ['post' => Post::find($id), 'categories' => Category::all()]);
     }
 
     /**

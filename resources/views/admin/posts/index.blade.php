@@ -7,6 +7,6 @@
                         </div>
                 </div>
                 <hr class="my-2">
-                <div>{{ $posts; }}</div>
+                <x-admin.posts :posts="$posts"></x-admin.posts>
         </div>
 </x-layouts.admin>
