@@ -1,7 +1,7 @@
 <x-layouts.admin>
     <div class="flex p-5">
-        <form class="form" method="{{ isset($category)? 'PATCH' : 'POST'}}" action="{{ isset($category)? route('admin.categories.update', $category->id)  : route('admin.categories.store') }}" style="width: 600px;">
-            <!-- show errors -->
+        <form class="form" method="POST" action="{{ isset($category)? route('admin.categories.update', $category->id) : route('admin.categories.store') }}" style="width: 600px;">
+        <!-- show errors -->
             <x-common.errors />
             @csrf
             <div>

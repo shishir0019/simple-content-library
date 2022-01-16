@@ -1,7 +1,6 @@
 <x-layouts.admin>
     <div class="flex p-5">
-        <form class="form" method="POST" action="{{ route('admin.posts.store') }}"
-              style="width: 600px;">
+        <form class="form" method="POST" action="{{ isset($post)? route('admin.posts.update', $post->id) : route('admin.posts.store') }}" style="width: 600px;">
             <!-- show errors -->
             <x-common.errors/>
             @csrf

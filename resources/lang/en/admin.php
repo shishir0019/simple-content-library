@@ -9,6 +9,7 @@ return [
     'categories' => 'Categories',
     'create' => 'Create',
     'edit' => 'Edit',
+    'delete' => 'Delete',
     'category' => 'Category',
     'categories' => 'Categories',
     'post' => 'Post',
@@ -17,4 +18,8 @@ return [
     'slag' => 'Slag',
     'save' => 'Save',
     'add' => 'Add',
+    'all' => 'All',
+    'action' => 'Action',
+    'serial' => 'Serial',
+    'title' => 'Title',
 ];

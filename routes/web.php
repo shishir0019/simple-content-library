@@ -30,7 +30,7 @@ Route::prefix('_admin')->group(function () {
             Route::post('', [PostController::class, 'store'])->name('admin.posts.store');
             Route::get('/{id}/show', [PostController::class, 'show'])->name('admin.posts.show');
             Route::get('/{id}', [PostController::class, 'edit'])->name('admin.posts.edit');
-            Route::patch('/{id}', [PostController::class, 'update'])->name('admin.posts.update');
+            Route::post('/{id}', [PostController::class, 'update'])->name('admin.posts.update');
             Route::delete('/{id}', [PostController::class, 'destroy'])->name('admin.posts.delete');
         });
         // categories
@@ -40,8 +40,8 @@ Route::prefix('_admin')->group(function () {
             Route::post('', [CategoryController::class, 'store'])->name('admin.categories.store');
             Route::get('/{id}/show', [CategoryController::class, 'show'])->name('admin.categories.show');
             Route::get('/{id}', [CategoryController::class, 'edit'])->name('admin.categories.edit');
-            Route::patch('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
-            Route::delete('/{id}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
+            Route::post('/{id}', [CategoryController::class, 'update'])->name('admin.categories.update');
+            Route::post('/{id}/del', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
         });
 
         Route::view('/settings', 'admin/settings/index')->name('admin.settings.view');

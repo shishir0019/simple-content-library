@@ -95,7 +95,26 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $validator = Validator::make($request->all(), [
+            'title' => 'required|min:3',
+            'slag' => 'required|min:3|max:15|unique:posts,slag,'.$post->id,
+            'category' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('admin.posts.create'))->withErrors($validator)->withInput();
+        }
+
+        $body = $validator->safe()->only(['title', 'slag', 'category']);
+
+        $post->fill($body)->save();
+
+        if ($post) {
+            return redirect(route('admin.posts.index'))->with('global-success', 'Post Update successfully');
+        } else {
+            App::abort(500, 'Server Error');
+        }
     }
 
     /**

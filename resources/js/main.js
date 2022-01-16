@@ -18,3 +18,16 @@ closeMenu = () => {
         sidebar.style.display = 'flex';
     }
 }
+
+tiggerConfirm = (id) => {
+    console.log(id);
+    let confirm = document.querySelector('#confirm');
+    let isShow = [...confirm.classList].some(item => item === 'hidden')
+    if(isShow){
+        confirm.classList.remove('hidden');
+        confirm.classList.add('flex');
+    }else{
+        confirm.classList.remove('flex');
+        confirm.classList.add('hidden');
+    }
+}

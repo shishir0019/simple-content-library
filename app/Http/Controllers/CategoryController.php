@@ -91,12 +91,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($id);
         $category = Category::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3',
-            'slag' => 'required|min:3|max:15|unique:categories',
+            'slag' => 'required|min:3|max:15|unique:categories,slag,'.$category->id
         ]);
 
         if ($validator->fails()) {
@@ -108,7 +107,7 @@ class CategoryController extends Controller
         $category->fill($body)->save();
 
         if ($category) {
-            return redirect(route('admin.categories.index'))->with('global-success', 'Post Createed successfully');
+            return redirect(route('admin.categories.index'))->with('global-success', 'Category update successfully');
         } else {
             App::abort(500, 'Server Error');
         }
@@ -122,6 +121,6 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return redirect(route('admin.categories.index'))->with('global-success', 'Deletion success.');
     }
 }

@@ -19,7 +19,7 @@
     <div class="flex-1 flex">
         <x-sidebar.admin></x-sidebar.admin>
         <div class="h-fill flex flex-col w-full">
-            <div class="flex-1 flex flex-col">
+            <div class="flex-1 flex flex-col relative">
                 <x-common.breadcrumbs></x-common.breadcrumbs>
                 <x-common.notification></x-common.notification>
                 <div class="flex-1 overflow-y-scroll">
